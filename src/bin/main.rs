@@ -9,7 +9,7 @@ use std::time::Duration;
 fn main() {
     let addr = "127.0.0.1:7878";
     let listener = TcpListener::bind(addr).unwrap();
-    println!("> Running Server at {}", addr);
+    println!("Running Server at http://{}", addr);
 
     let pool = ThreadPool::new(4);
 
@@ -20,6 +20,8 @@ fn main() {
             handle_connection(stream);
         });
     }
+
+    println!("Shutting down.");
 }
 
 fn handle_connection(mut stream: TcpStream) {
